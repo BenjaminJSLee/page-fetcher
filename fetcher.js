@@ -35,7 +35,8 @@ request(args[0], (err, response, body) => {
             console.log(err.message);
             process.exit();
           }
-          console.log(`Downloaded and saved ${body.length} bytes to ${args[1]}`);
+          const bytes = fs.statSync(args[1]).size;
+          console.log(`Downloaded and saved ${bytes} bytes to ${args[1]}`);
         });
         rl.close();
       });
@@ -45,7 +46,8 @@ request(args[0], (err, response, body) => {
           console.log(err.message);
           process.exit();
         }
-        console.log(`Downloaded and saved ${body.length} bytes to ${args[1]}`);
+        const bytes = fs.statSync(args[1]).size;
+        console.log(`Downloaded and saved ${bytes} bytes to ${args[1]}`);
       });
     }
   });
